@@ -1,0 +1,55 @@
+﻿.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid rgba(28, 117, 165, 0.2);
+  border-radius: 12px;
+  background: #f3f9fd;
+  color: #173a51;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.socialLink span { display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.socialLink b { color: #173a51; font-size: .82rem; font-weight: 700; }
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: currentColor;
+  background: #ffffff;
+  box-shadow: 0 10px 22px rgba(32, 99, 137, 0.14);
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(32, 99, 137, .12);
+}
+
+.zalo { color: #008fbd; }
+.facebook { color: #2563d9; }
+.instagram { color: #db3f88; }
+
+@media (max-width: 520px) {
+  .socialLink {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .socialLink span { white-space: normal; }
+}
+
+

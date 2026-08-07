@@ -1,0 +1,97 @@
+﻿.header.header { position: sticky; top: 0; z-index: 30; display: grid; grid-template-columns: minmax(168px, 210px) minmax(0, 1fr) auto auto; align-items: center; gap: clamp(18px, 2.5vw, 36px); height: 92px; padding-inline: max(24px, calc((100vw - 1240px) / 2)); border-bottom: 1px solid rgba(173, 226, 244, .1); background: rgba(7, 18, 29, .78); box-shadow: 0 10px 28px rgba(0, 0, 0, .12); backdrop-filter: blur(13px); -webkit-backdrop-filter: blur(13px); transition: background 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.scrolled { border-bottom-color: rgba(88, 220, 240, .26) !important; background: rgba(5, 16, 27, .94) !important; box-shadow: 0 14px 34px rgba(0, 0, 0, .26); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+
+.ticker { position: relative; z-index: 6; height: 40px; overflow: hidden; border-bottom: 1px solid rgba(23, 97, 135, .14); background: #07121d; color: #c8d9e6; font-size: 12px; font-weight: 700; letter-spacing: .14em; line-height: 40px; white-space: nowrap; }
+.tickerTrack { display: flex; width: max-content; gap: 54px; animation: ticker-scroll 29s linear infinite; }
+.tickerTrack span::before { margin-right: 12px; color: #24d9ec; content: "âœ¦"; }
+@keyframes ticker-scroll { to { transform: translateX(-25%); } }
+
+.brand {
+  display: block;
+  width: clamp(168px, 14vw, 210px);
+  height: 68px;
+  overflow: hidden;
+  line-height: 0;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(1.08) contrast(1.08) brightness(1.08);
+  mix-blend-mode: screen;
+  transition: transform 180ms ease;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+}
+.brand:hover img { transform: scale(1.025); }
+
+.desktopNav { display: flex; align-items: center; justify-content: flex-start; gap: clamp(22px, 2.15vw, 36px); min-width: 0; }
+.desktopNav a { position: relative; padding: 9px 0; color: #dbeaf2; font-size: 15px; font-weight: 600; line-height: 1.4; letter-spacing: 0; text-decoration: none; transition: color 180ms ease, text-shadow 180ms ease; }
+.desktopNav a::after { position: absolute; right: 0; bottom: 2px; left: 0; height: 2px; content: ""; background: #2ee4f6; box-shadow: 0 0 12px rgba(46, 228, 246, .56); opacity: 0; transform: scaleX(.45); transform-origin: center; transition: opacity 180ms ease, transform 180ms ease; }
+.desktopNav a:hover, .desktopNav .active { color: #2ee4f6; text-shadow: 0 0 16px rgba(46, 228, 246, .22); }
+.desktopNav a:hover::after, .desktopNav .active::after { opacity: 1; transform: scaleX(1); }
+
+.consultation {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #d5e9f5;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.consultation > span:first-child { color: #2ee4f6; font-size: 1rem; }
+.consultation b { color: #2ee4f6; font-size: .96rem; }
+.active { color: #2ee4f6 !important; }
+.desktopNav .active { text-shadow: 0 0 16px rgba(46, 228, 246, .24); }
+
+.header :global(.button) { min-height: 54px; padding: 0 18px; border: 1px solid rgba(109, 232, 246, .5); font-size: 14px; font-weight: 600; letter-spacing: .01em; box-shadow: 0 10px 24px rgba(0, 177, 209, .18); transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease; }
+.header :global(.button span) { display: inline-block; transition: transform 180ms ease; }
+.header :global(.button:hover) { filter: brightness(1.07); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0, 191, 222, .3); }
+.header :global(.button:hover span) { transform: translate(3px, -3px); }
+
+.menuToggle, .mobileNav { display: none; }
+
+@media (max-width: 1120px) { .consultation { display: none; } }
+
+@media (max-width: 980px) {
+  .header.header { grid-template-columns: minmax(152px, 190px) 1fr auto auto; height: 84px; padding-inline: 24px; }
+  .desktopNav { display: none; }
+  .header :global(.button) { display: none; }
+  .header :global(.mobile-call) { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: #2ee4f6; font-size: 1.28rem; text-decoration: none; }
+  .menuToggle { display: grid; gap: 5px; width: 42px; height: 42px; padding: 11px 9px; border: 1px solid rgba(107, 231, 247, .34); background: rgba(10, 28, 41, .7); cursor: pointer; }
+  .menuToggle span { display: block; height: 2px; background: #44e4f3; transition: transform 180ms ease, opacity 180ms ease; }
+  .menuToggleOpen span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menuToggleOpen span:nth-child(2) { opacity: 0; }
+  .menuToggleOpen span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobileNav { position: absolute; top: calc(100% + 10px); right: 14px; left: 14px; z-index: 10; display: grid; gap: 14px; padding: 14px; border: 1px solid rgba(91, 225, 242, .24); background: rgba(6, 20, 31, .98); box-shadow: 0 20px 46px rgba(0, 0, 0, .28); opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 180ms ease, transform 180ms ease; }
+  .mobileNavOpen { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .mobileNav nav { display: grid; gap: 2px; }
+  .mobileNav nav a { display: flex; align-items: center; justify-content: space-between; padding: 13px 10px; color: #e6f5fb; font-size: 15px; font-weight: 600; line-height: 1.4; letter-spacing: 0; text-decoration: none; }
+  .mobileNav nav a span { color: #44e4f3; }
+  .mobileConsultation { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; background: linear-gradient(135deg, #20d6e7, #2388e8); color: #062033; font-size: 15px; font-weight: 600; line-height: 1.4; letter-spacing: 0; text-decoration: none; }
+  .mobileConsultation b { font-size: .92rem; }
+}
+
+@media (max-width: 620px) {
+  .ticker { height: 38px; font-size: 12px; line-height: 38px; }
+  .tickerTrack { gap: 34px; animation-duration: 22s; }
+  .header.header { grid-template-columns: minmax(144px, 168px) 1fr auto auto; height: 72px; padding-inline: 16px; gap: 8px; }
+  .brand { width: 154px; height: 62px; }
+  .menuToggle { width: 40px; height: 40px; }
+  .mobileNav { right: 10px; left: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .tickerTrack { animation: none; } }
+
+
+

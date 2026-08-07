@@ -1,0 +1,16 @@
+﻿.image {
+  position: relative;
+  aspect-ratio: 1.8;
+  width: min(100%, 920px);
+  margin: 34px 0;
+  overflow: hidden;
+  border: 1px solid rgba(26, 105, 147, .18);
+  background: #eaf3fa;
+  box-shadow: 0 20px 50px rgba(36, 91, 122, .12);
+}
+
+.image :global(img) { object-fit: cover; }
+
+@media (max-width: 600px) { .image { aspect-ratio: 1.28; margin: 25px 0; } }
+
+

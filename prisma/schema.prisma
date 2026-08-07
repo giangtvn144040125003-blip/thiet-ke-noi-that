@@ -1,0 +1,190 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  SALES
+  EDITOR
+  PROJECT_MANAGER
+  VIEWER
+}
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  QUOTED
+  WON
+  LOST
+  SPAM
+}
+enum LeadPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model User {
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  role Role @default(VIEWER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  leads Lead[] @relation("AssignedLeads")
+  notes LeadNote[]
+  @@index([createdAt])
+}
+
+model Service {
+  id String @id @default(cuid())
+  slug String @unique
+  name String
+  summary String
+  content String?
+  benefits String[]
+  deliverables String[]
+  status PublishStatus @default(DRAFT)
+  order Int @default(0)
+  seoTitle String?
+  seoDescription String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, createdAt])
+}
+
+model InvestmentPackage {
+  id String @id @default(cuid())
+  slug String @unique
+  name String
+  summary String
+  machineMin Int
+  machineMax Int
+  priceFrom Int?
+  priceTo Int?
+  features String[]
+  status PublishStatus @default(DRAFT)
+  featured Boolean @default(false)
+  order Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, createdAt])
+}
+
+model Project {
+  id String @id @default(cuid())
+  slug String @unique
+  title String
+  location String?
+  machineCount Int?
+  category String?
+  duration String?
+  summary String
+  content String?
+  coverImage String?
+  gallery String[]
+  status PublishStatus @default(DRAFT)
+  completedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, createdAt])
+}
+
+model Post {
+  id String @id @default(cuid())
+  slug String @unique
+  title String
+  excerpt String
+  content String?
+  coverImage String?
+  category String?
+  status PublishStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, publishedAt])
+}
+
+model Faq {
+  id String @id @default(cuid())
+  question String
+  answer String
+  category String?
+  order Int @default(0)
+  status PublishStatus @default(DRAFT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, order])
+}
+
+model Lead {
+  id String @id @default(cuid())
+  code String @unique
+  name String
+  phone String
+  phoneNormalized String @unique
+  email String?
+  emailNormalized String?
+  company String?
+  message String?
+  source String?
+  referrer String?
+  utmSource String?
+  utmMedium String?
+  utmCampaign String?
+  status LeadStatus @default(NEW)
+  priority LeadPriority @default(NORMAL)
+  assignedToId String?
+  assignedTo User? @relation("AssignedLeads", fields: [assignedToId], references: [id])
+  notes LeadNote[]
+  estimates Estimate[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([phone])
+  @@index([email])
+  @@index([emailNormalized])
+  @@index([status, createdAt])
+  @@index([createdAt])
+}
+
+model LeadNote {
+  id String @id @default(cuid())
+  body String
+  leadId String
+  authorId String
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  @@index([leadId, createdAt])
+}
+
+model Estimate {
+  id String @id @default(cuid())
+  leadId String?
+  lead Lead? @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  areaSqm Int
+  machineCount Int
+  segment String
+  configurationLevel String
+  includeInterior Boolean @default(true)
+  includeAircon Boolean @default(false)
+  includeCamera Boolean @default(false)
+  province String?
+  totalMin Int
+  totalMax Int
+  breakdown Json
+  calculationVersion String
+  createdAt DateTime @default(now())
+  @@index([leadId, createdAt])
+}

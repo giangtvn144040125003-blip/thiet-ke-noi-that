@@ -1,0 +1,72 @@
+﻿.footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 54px;
+  padding: 78px 24px 26px;
+  border-top: 1px solid rgba(25, 127, 173, .16);
+  background: radial-gradient(circle at 12% 35%, rgba(0, 180, 220, .12), transparent 28%), linear-gradient(180deg, #eef7fb, #f7fbfd);
+}
+
+.shell { width: min(1240px, 100%); margin: 0 auto; }
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(390px, .82fr);
+  overflow: hidden;
+  border: 1px solid rgba(25, 127, 173, .18);
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(36, 91, 122, .14);
+}
+
+.content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(36px, 3vw, 44px); }
+.kicker { margin: 0 0 17px; color: #008fbd; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; }
+.content h2 { width: 100%; max-width: 660px; margin: 0; color: #102437; font-family: var(--font-sans); font-size: clamp(44px, 4vw, 56px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.10; text-wrap: balance; }
+.content h2 span { display: block; white-space: nowrap; }
+.accentLine { color: #00bfe0; }
+.lede { max-width: 720px; margin: 20px 0 0; color: #60778b; font-size: 17px; font-weight: 400; line-height: 1.75; letter-spacing: 0; }
+
+.address { display: inline-flex; align-items: center; gap: 10px; margin: 25px 0 0; padding: 10px 12px; border: 1px solid rgba(25, 127, 173, .14); background: #f6fbfe; color: #173a51; font-size: 15px; font-weight: 600; line-height: 1.4; }
+.address svg { width: 19px; height: 19px; color: #00a9d6; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.call { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 19px; border: 1px solid #00a9d6; background: linear-gradient(135deg, #20d6e7, #2388e8); color: #062033; font-size: 15px; font-weight: 600; line-height: 1.4; text-decoration: none; box-shadow: 0 12px 28px rgba(22, 151, 207, .2); }
+.call svg { width: 21px; height: 21px; flex: 0 0 auto; }
+.call b { font-size: 1rem; font-weight: 600; }
+
+.social { width: 100%; margin-top: 14px; }
+.social > div { display: flex; flex-wrap: wrap; gap: 12px; width: min(100%, 570px); }
+.social a { flex: 0 1 auto; justify-content: flex-start; min-height: 52px; padding: 9px 13px; border-radius: 12px; background: #f7fbfe; }
+.social a img { width: 29px; height: 29px; }
+.social a span { gap: 5px; font-size: 14px; font-weight: 600; line-height: 1.4; letter-spacing: 0; }
+.social a b { font-size: 14px; font-weight: 600; }
+
+.visual { position: relative; min-height: 430px; overflow: hidden; background: #d9eef6; }
+.visual::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgba(8, 29, 43, .58), transparent 56%), linear-gradient(0deg, rgba(8, 29, 43, .22), rgba(8, 29, 43, .02)); pointer-events: none; }
+.visual img { object-fit: cover; object-position: center 54%; }
+.visualLabel { position: absolute; z-index: 1; right: 23px; bottom: 22px; padding: 9px 11px; border: 1px solid rgba(139, 238, 255, .45); background: rgba(3, 11, 18, .72); color: #b9f8ff; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; }
+
+.copyright { display: block; margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(25, 127, 173, .15); color: #6c8496; font-size: .75rem; }
+
+@media (max-width: 1200px) {
+  .footer { padding-top: 48px; }
+  .main { grid-template-columns: 1fr; }
+  .content { order: 2; }
+  .visual { order: 1; min-height: 280px; }
+  .content h2 { width: 100%; }
+}
+
+@media (max-width: 700px) {
+  .content h2 { font-size: clamp(38px, 9vw, 52px); line-height: 1.12; letter-spacing: -0.01em; }
+}
+
+@media (max-width: 520px) {
+  .footer { padding-inline: 14px; }
+  .content { padding: 32px 22px; }
+  .visual { min-height: 220px; }
+  .lede { font-size: 17px; }
+  .social > div { display: grid; grid-template-columns: 1fr; width: 100%; }
+  .social a { justify-content: flex-start; }
+}
+
+
+

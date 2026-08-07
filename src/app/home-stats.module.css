@@ -1,0 +1,38 @@
+﻿.stats {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  margin-top: 46px;
+  border: 1px solid rgba(27, 120, 164, .18);
+  background: #ffffff;
+}
+
+.stats::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(255,255,255,.86), rgba(244,250,253,.72) 50%, rgba(255,255,255,.82)), url("/images/gaming-room-hero-hd-v3.webp") center 52% / cover;
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  min-height: 142px;
+  padding: 30px 28px;
+  border-right: 1px solid rgba(27, 120, 164, .16);
+}
+
+.item:last-child { border-right: 0; }
+.item strong { display: block; color: #008fbd; font-size: clamp(1.3rem, 2.2vw, 2rem); letter-spacing: -0.01em; }
+.item span { display: block; margin-top: 7px; color: #60778b; font-size: .9rem; }
+
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 30px; }
+  .item { min-height: 116px; padding: 22px 18px; }
+  .item:nth-child(2) { border-right: 0; }
+  .item:nth-child(-n+2) { border-bottom: 1px solid rgba(27, 120, 164, .16); }
+}
+
+
