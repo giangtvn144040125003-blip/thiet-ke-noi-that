@@ -1,7 +1,11 @@
 node_modules
 .next
+.vercel
 .env*
 !.env.example
 *.tsbuildinfo
 *.log
 *.err.log
+
+.vercel
+.env*

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
-import { showcasePackages } from "@/lib/showcase-content";
+import { ContentState } from "@/components/content-state";
 import { getPublishedPackages } from "@/services/public-content";
 import styles from "./investment-catalog.module.css";
 
@@ -31,7 +31,7 @@ const investmentItems = [
 
 export default async function PackagesPage() {
   const result = await getPublishedPackages();
-  const packages = result.data.length ? result.data : showcasePackages;
+  const packages = result.data;
 
   return (
     <>
@@ -53,7 +53,7 @@ export default async function PackagesPage() {
             </div>
           </div>
 
-          <div className={styles.productGrid}>
+          {packages.length ? <div className={styles.productGrid}>
               {packages.map((item, index) => (
                 <article className={styles.productCard} key={item.id}>
                   <div className={styles.imageWrap}>
@@ -72,7 +72,7 @@ export default async function PackagesPage() {
                   </div>
                 </article>
               ))}
-            </div>
+            </div> : <ContentState unavailable={result.unavailable} label="gói đầu tư" />}
 
           <section className={styles.investmentNeeds} aria-labelledby="investment-needs-title">
             <div className={styles.needsHeading}>
@@ -91,3 +91,5 @@ export default async function PackagesPage() {
     </>
   );
 }
+
+

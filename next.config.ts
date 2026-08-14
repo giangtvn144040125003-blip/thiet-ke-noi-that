@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
-    qualities: [75, 90],
+    qualities: [75, 90, 100],
   },
   async headers() {
     return [

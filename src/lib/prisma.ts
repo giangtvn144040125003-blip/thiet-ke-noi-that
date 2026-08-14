@@ -4,8 +4,14 @@ import { PrismaPg } from "@prisma/adapter-pg";
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 const connectionString = process.env.DATABASE_URL;
 
-if (!connectionString) throw new Error("DATABASE_URL is required to initialize Prisma.");
+const unavailablePrisma = new Proxy({} as PrismaClient, {
+  get() {
+    throw new Error("DATABASE_URL is required to initialize Prisma.");
+  },
+});
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient({ adapter: new PrismaPg({ connectionString }) });
+export const prisma = connectionString
+  ? globalForPrisma.prisma ?? new PrismaClient({ adapter: new PrismaPg({ connectionString }) })
+  : unavailablePrisma;
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (connectionString && process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

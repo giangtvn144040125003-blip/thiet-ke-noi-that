@@ -99,7 +99,7 @@
   .hero { min-height: 820px; }
   .hero :global(.site-header) { height: 72px; padding-inline: 16px; }
   .heroMedia { inset: 0; }
-  .heroMedia::after { background: linear-gradient(90deg, rgba(4, 14, 25, .88), rgba(4, 14, 25, .6)), linear-gradient(0deg, rgba(2, 11, 21, .94), transparent 66%); }
+  .heroMedia::after { background: linear-gradient(90deg, rgba(4, 14, 25, .72), rgba(4, 14, 25, .34) 72%), linear-gradient(0deg, rgba(2, 11, 21, .68), transparent 66%); }
   .heroInner { width: calc(100% - 40px); padding: 86px 0 270px; }
   .hero h1 { max-width: 100%; font-size: clamp(42px, 10vw, 62px); line-height: 1.12; letter-spacing: -0.01em; }
   .heroLead { font-size: 17px; }

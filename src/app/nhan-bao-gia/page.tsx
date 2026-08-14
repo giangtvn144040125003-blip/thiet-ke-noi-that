@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LeadForm } from "@/components/lead-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { AutoplayVideo } from "@/components/autoplay-video";
 import { site } from "@/lib/site";
 import styles from "./cta.module.css";
 
@@ -18,9 +19,7 @@ function PhoneIcon() {
 export default function QuotePage() {
   return <><SiteHeader /><main className={styles.page}>
     <section className={styles.hero}>
-      <video className={styles.heroVideo} autoPlay muted loop playsInline preload="metadata" poster="/images/gaming-room-hero-hd-v3.webp" aria-hidden="true" tabIndex={-1}>
-        <source src="/videos/gaming-room-cinematic-uhd.mp4" type="video/mp4" />
-      </video>
+      <AutoplayVideo className={styles.heroVideo} poster="/images/gaming-room-hero-hd-v3.webp" src="/videos/gaming-room-cinematic-uhd.mp4" />
       <div className={styles.heroOverlay} />
       <div className={styles.heroContent}>
         <p className={styles.eyebrow}>BÁO GIÁ SƠ BỘ / GIANGCUON GAMING</p>

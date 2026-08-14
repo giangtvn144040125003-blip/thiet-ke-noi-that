@@ -3,7 +3,7 @@
 
 .ticker { position: relative; z-index: 6; height: 40px; overflow: hidden; border-bottom: 1px solid rgba(23, 97, 135, .14); background: #07121d; color: #c8d9e6; font-size: 12px; font-weight: 700; letter-spacing: .14em; line-height: 40px; white-space: nowrap; }
 .tickerTrack { display: flex; width: max-content; gap: 54px; animation: ticker-scroll 29s linear infinite; }
-.tickerTrack span::before { margin-right: 12px; color: #24d9ec; content: "âœ¦"; }
+.tickerTrack span::before { content: none; }
 @keyframes ticker-scroll { to { transform: translateX(-25%); } }
 
 .brand {
@@ -92,6 +92,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) { .tickerTrack { animation: none; } }
+
+/* Keep the mobile menu above the Hero and every animated visual layer. */
+.header.header { position: sticky !important; z-index: 100 !important; isolation: isolate; }
+@media (max-width: 980px) {
+  .mobileNav { z-index: 101; max-height: calc(100dvh - 104px); overflow-y: auto; }
+}
 
 
 

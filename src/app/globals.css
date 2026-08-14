@@ -36,4 +36,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 520px) { h1, h2, h3 { letter-spacing: -0.01em; } }
 @media (max-width:800px) { .package-card { min-height:420px; padding:166px 26px 26px; }.package-card .text-link { bottom:24px; } }
 
+/* Use Unicode code points so list markers can never render as broken encoded text. */
+ul { list-style: "\2713  "; }
+
 

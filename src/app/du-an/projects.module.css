@@ -1,0 +1,18 @@
+.page { background: #f4f8fc; color: #102437; padding: 78px 0 110px; }
+.intro { width: min(1240px, calc(100% - 48px)); margin: 0 auto 32px; }
+.intro p { margin: 0 0 13px; color: #008fbd; font-size: 12px; font-weight: 700; letter-spacing: .14em; line-height: 1.4; text-transform: uppercase; }
+.intro h1 { max-width: 860px; margin: 0; font-size: clamp(42px, 4.8vw, 72px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; width: min(1440px, calc(100% - 48px)); margin: 0 auto; overflow: hidden; background: #d4e1e9; }
+.project { position: relative; min-height: clamp(470px, 48vw, 680px); overflow: hidden; background: #173047; isolation: isolate; }
+.project :global(img) { object-fit: cover; object-position: center; transition: transform 600ms ease; }
+.project:hover :global(img) { transform: scale(1.035); }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 20, 34, .02) 35%, rgba(5, 20, 34, .82) 100%); pointer-events: none; }
+.projectInfo { position: absolute; right: 30px; bottom: 31px; left: 30px; color: #fff; }
+.projectInfo span { display: block; margin-bottom: 12px; color: #9cecf6; font-size: 11px; font-weight: 700; letter-spacing: .13em; line-height: 1.4; text-transform: uppercase; }
+.projectInfo h2 { margin: 0; font-size: clamp(24px, 2.1vw, 34px); font-weight: 600; letter-spacing: 0; line-height: 1.28; }
+.projectInfo p { margin: 8px 0 0; color: rgba(244, 252, 255, .86); font-size: 14px; line-height: 1.5; }
+.projectInfo a { display: inline-flex; gap: 9px; margin-top: 22px; color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .01em; line-height: 1.4; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .58); text-underline-offset: 6px; text-transform: uppercase; }
+.projectInfo a:hover { color: #35ddea; }
+.projectInfo b { font-size: 17px; }
+@media (max-width: 900px) { .page { padding-top: 60px; } .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .project { min-height: 500px; } .project:last-child { grid-column: 1 / -1; min-height: 420px; } }
+@media (max-width: 600px) { .page { padding: 48px 0 74px; } .intro, .gallery { width: calc(100% - 32px); } .intro { margin-bottom: 24px; } .intro h1 { font-size: clamp(36px, 10vw, 48px); line-height: 1.12; } .gallery { grid-template-columns: 1fr; gap: 3px; } .project, .project:last-child { min-height: 430px; grid-column: auto; } .projectInfo { right: 22px; bottom: 24px; left: 22px; } }
