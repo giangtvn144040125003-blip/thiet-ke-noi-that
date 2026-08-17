@@ -1,0 +1,32 @@
+.page {
+  width: min(960px, calc(100% - 48px));
+  min-height: 62vh;
+  margin: 0 auto;
+  padding: 112px 0 80px;
+}
+
+.intro {
+  max-width: 760px;
+  margin-bottom: 44px;
+}
+
+.intro h1 {
+  max-width: 900px;
+  margin-bottom: 22px;
+  font-size: clamp(2.8rem, 5.2vw, 5.2rem);
+  line-height: 1.1;
+}
+
+.intro p:not(.eyebrow), .section p, .section li { color: var(--muted); font-size: 17px; line-height: 1.75; }
+.section { margin-top: 20px; padding: 30px; border: 1px solid var(--line); background: rgba(13, 20, 38, .72); }
+.section h2 { margin-bottom: 16px; font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.section p:last-child, .section ul:last-child { margin-bottom: 0; }
+.section ul { margin: 0; }
+.cta { margin-top: 32px; }
+
+@media (max-width: 700px) {
+  .page { width: min(100% - 32px, 960px); padding-top: 72px; }
+  .section { padding: 24px 20px; }
+}
+
+

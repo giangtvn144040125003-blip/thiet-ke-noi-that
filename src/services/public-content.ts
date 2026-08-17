@@ -1,10 +1,10 @@
 import type { ContentFaq, ContentPackage, ContentPost, ContentProject, ContentService } from "@/lib/content-types";
 
 type QueryResult<T> = { data: T; unavailable: boolean };
-type ServiceRow = { id: string; slug: string; name: string; summary: string; content: string | null; benefits: unknown; deliverables: unknown; cover_image: string | null };
-type PackageRow = { id: string; slug: string; name: string; summary: string; machine_min: number; machine_max: number; price_from: number | null; price_to: number | null; features: unknown; featured: boolean };
-type ProjectRow = { id: string; slug: string; title: string; location: string | null; machine_count: number | null; category: string | null; duration: string | null; summary: string; content: string | null; cover_image: string | null };
-type PostRow = { id: string; slug: string; title: string; excerpt: string; content: string | null; cover_image: string | null; category: string | null };
+type ServiceRow = { id: string; slug: string; name: string; summary: string; content: string | null; benefits: unknown; deliverables: unknown; cover_image: string | null; updated_at: string };
+type PackageRow = { id: string; slug: string; name: string; summary: string; machine_min: number; machine_max: number; price_from: number | null; price_to: number | null; features: unknown; featured: boolean; updated_at: string };
+type ProjectRow = { id: string; slug: string; title: string; location: string | null; machine_count: number | null; category: string | null; duration: string | null; summary: string; content: string | null; cover_image: string | null; updated_at: string };
+type PostRow = { id: string; slug: string; title: string; excerpt: string; content: string | null; cover_image: string | null; category: string | null; published_at: string | null; updated_at: string };
 type FaqRow = { id: string; question: string; answer: string; category: string | null };
 
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -30,16 +30,16 @@ async function queryRows<T>(resource: string): Promise<QueryResult<T[]>> {
 }
 
 function mapService(row: ServiceRow): ContentService {
-  return { id: row.id, slug: row.slug, name: row.name, summary: row.summary, content: row.content, benefits: toTextList(row.benefits), deliverables: toTextList(row.deliverables), coverImage: row.cover_image };
+  return { id: row.id, slug: row.slug, name: row.name, summary: row.summary, content: row.content, benefits: toTextList(row.benefits), deliverables: toTextList(row.deliverables), coverImage: row.cover_image, updatedAt: row.updated_at };
 }
 function mapPackage(row: PackageRow): ContentPackage {
-  return { id: row.id, slug: row.slug, name: row.name, summary: row.summary, machineMin: row.machine_min, machineMax: row.machine_max, priceFrom: row.price_from, priceTo: row.price_to, features: toTextList(row.features), featured: row.featured };
+  return { id: row.id, slug: row.slug, name: row.name, summary: row.summary, machineMin: row.machine_min, machineMax: row.machine_max, priceFrom: row.price_from, priceTo: row.price_to, features: toTextList(row.features), featured: row.featured, updatedAt: row.updated_at };
 }
 function mapProject(row: ProjectRow): ContentProject {
-  return { id: row.id, slug: row.slug, title: row.title, location: row.location, machineCount: row.machine_count, category: row.category, duration: row.duration, summary: row.summary, content: row.content, coverImage: row.cover_image };
+  return { id: row.id, slug: row.slug, title: row.title, location: row.location, machineCount: row.machine_count, category: row.category, duration: row.duration, summary: row.summary, content: row.content, coverImage: row.cover_image, updatedAt: row.updated_at };
 }
 function mapPost(row: PostRow): ContentPost {
-  return { id: row.id, slug: row.slug, title: row.title, excerpt: row.excerpt, content: row.content, coverImage: row.cover_image, category: row.category };
+  return { id: row.id, slug: row.slug, title: row.title, excerpt: row.excerpt, content: row.content, coverImage: row.cover_image, category: row.category, publishedAt: row.published_at, updatedAt: row.updated_at };
 }
 function mapFaq(row: FaqRow): ContentFaq {
   return { id: row.id, question: row.question, answer: row.answer, category: row.category };

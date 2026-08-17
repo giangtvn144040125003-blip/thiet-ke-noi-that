@@ -5,12 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AutoplayVideo } from "@/components/autoplay-video";
 import { site } from "@/lib/site";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./cta.module.css";
 
-export const metadata: Metadata = {
-  title: "Nhận báo giá phòng net gaming",
-  description: "Gửi yêu cầu để nhận tư vấn và báo giá sơ bộ cho dự án phòng net gaming của bạn.",
-};
+export const metadata: Metadata = createPageMetadata({ title: "Báo giá setup quán net & Cyber Gaming", description: "Gửi nhu cầu để nhận tư vấn cấu hình, hạng mục đầu tư và báo giá sơ bộ cho phòng máy của bạn tại Đà Nẵng.", path: "/nhan-bao-gia" });
 
 function PhoneIcon() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7.2 3.5 10 8l-2.1 2.1a15.2 15.2 0 0 0 6 6L16 14l4.5 2.8-.8 3.3c-.2.7-.8 1.2-1.6 1.2A15.4 15.4 0 0 1 2.7 5.9c0-.8.5-1.4 1.2-1.6l3.3-.8Z" /></svg>;
@@ -54,3 +52,5 @@ export default function QuotePage() {
     </section>
   </main><SiteFooter /></>;
 }
+
+

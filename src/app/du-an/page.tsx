@@ -5,13 +5,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentState } from "@/components/content-state";
 import { getPublishedProjects } from "@/services/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./projects.module.css";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = {
-  title: "Dự án",
-  description: "Các dự án phòng máy do GiangCuon Gaming triển khai.",
-};
+export const metadata: Metadata = createPageMetadata({ title: "Phương án thiết kế phòng máy & Cyber Gaming", description: "Tham khảo các phương án minh họa về quy hoạch, thiết kế và triển khai không gian phòng máy của GiangCuon Gaming.", path: "/du-an" });
 
 export default async function ProjectsPage() {
   const result = await getPublishedProjects();
@@ -22,8 +20,8 @@ export default async function ProjectsPage() {
       <SiteHeader />
       <main className={styles.page}>
         <header className={styles.intro}>
-          <p>Dự án đã triển khai</p>
-          <h1>Không gian được xây dựng cho trải nghiệm thật.</h1>
+          <p>Phương án minh họa</p>
+          <h1>Ý tưởng thiết kế phòng máy cho trải nghiệm thật.</h1>
         </header>
         {projects.length ? <section className={styles.gallery} aria-label="Các dự án tiêu biểu">
           {projects.map((project, index) => (

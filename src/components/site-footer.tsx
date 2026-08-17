@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SocialLinks } from "@/components/social-links";
 import { site } from "@/lib/site";
 import styles from "./site-footer.module.css";
@@ -33,8 +34,16 @@ export function SiteFooter() {
             <span className={styles.visualLabel}>Build / Play / Grow</span>
           </div>
         </div>
+        <nav className={styles.trustLinks} aria-label="Liên kết chính sách">
+          <Link href="/gioi-thieu">Giới thiệu</Link>
+          <Link href="/chinh-sach-bao-mat">Chính sách bảo mật</Link>
+          <Link href="/dieu-khoan">Điều khoản sử dụng</Link>
+          <Link href="/chinh-sach-bao-hanh">Chính sách bảo hành</Link>
+        </nav>
         <small className={styles.copyright}>© {new Date().getFullYear()} {site.name}. Thiết kế phòng máy, tư vấn và triển khai tại Đà Nẵng.</small>
       </div>
     </footer>
   );
 }
+
+

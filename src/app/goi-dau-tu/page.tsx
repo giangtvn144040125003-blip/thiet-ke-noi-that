@@ -6,13 +6,11 @@ import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
 import { ContentState } from "@/components/content-state";
 import { getPublishedPackages } from "@/services/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "./investment-catalog.module.css";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = {
-  title: "Gói đầu tư",
-  description: "Các gói đầu tư phòng máy tham khảo theo quy mô.",
-};
+export const metadata: Metadata = createPageMetadata({ title: "Gói đầu tư & setup quán net tham khảo", description: "Tham khảo hạng mục đầu tư setup quán net theo quy mô; nhận tư vấn cấu hình, mặt bằng và dự toán từ GiangCuon Gaming.", path: "/goi-dau-tu" });
 
 const packageImages = [
   "/images/service-design-hd-v3.webp",

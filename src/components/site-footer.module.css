@@ -1,4 +1,4 @@
-﻿.footer {
+.footer {
   position: relative;
   overflow: hidden;
   margin-top: 54px;
@@ -45,6 +45,8 @@
 .visual img { object-fit: cover; object-position: center 54%; }
 .visualLabel { position: absolute; z-index: 1; right: 23px; bottom: 22px; padding: 9px 11px; border: 1px solid rgba(139, 238, 255, .45); background: rgba(3, 11, 18, .72); color: #b9f8ff; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; }
 
+.trustLinks { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; color: #60778b; font-size: 13px; font-weight: 500; line-height: 1.5; }
+.trustLinks a:hover { color: #008fbd; text-decoration: underline; text-underline-offset: 4px; }
 .copyright { display: block; margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(25, 127, 173, .15); color: #6c8496; font-size: .75rem; }
 
 @media (max-width: 1200px) {
@@ -77,6 +79,8 @@
   .call { justify-content: center; width: 100%; padding-inline: 14px; white-space: nowrap; }
   .social a { min-width: 0; }
 }
+
+
 
 
 

@@ -1,10 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AutoplayVideo } from "@/components/autoplay-video";
 import { getPublishedPosts, getPublishedServices } from "@/services/public-content";
+import { createPageMetadata } from "@/lib/seo";
+import { serviceCanonicalPath } from "@/lib/seo-guides";
 import styles from "./shooter-home.module.css";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Thiết kế & thi công quán net, Cyber Gaming tại Đà Nẵng",
+  description: "GiangCuon Gaming tư vấn, thiết kế và thi công setup quán net, Cyber Gaming trọn gói tại Đà Nẵng và Miền Trung.",
+  path: "/",
+  image: "/images/gaming-room-hero-hd-v3.webp",
+  imageAlt: "Không gian phòng máy Cyber Gaming hiện đại tại Đà Nẵng",
+});
 
 export default async function Home() {
   const [servicesResult, postsResult] = await Promise.all([getPublishedServices(), getPublishedPosts()]);
@@ -17,12 +28,7 @@ export default async function Home() {
       </div>
       <div className={styles.heroInner}>
         <p className={styles.eyebrow}>GIANGCUON GAMING / ĐÀ NẴNG</p>
-        <h1>
-          <span>Tối ưu từng mét vuông.</span>
-          <span>Vận hành từng chi phí.</span>
-          <em>Gia tăng</em>
-          <em>lợi nhuận.</em>
-        </h1>
+        <h1><span>Thiết kế & thi công quán net,</span><span>Cyber Gaming trọn gói</span><em>tại Đà Nẵng.</em></h1>
         <p className={styles.heroLead}>Chúng tôi thiết kế phòng máy dựa trên ngân sách, mặt bằng và tệp khách hàng, giúp bạn đầu tư đúng ngay từ đầu và vận hành hiệu quả lâu dài.</p>
         <div className={styles.heroActions}><Link className={styles.primaryButton} href="/lien-he">Nhận tư vấn miễn phí <span>↗</span></Link><Link className={styles.secondaryButton} href="/du-an">Xem dự án đã triển khai</Link></div>
       </div>
@@ -38,7 +44,7 @@ export default async function Home() {
 
     <section className={styles.highlightSection}>
       <div className={styles.sectionHeading}><div><p className={styles.sectionEyebrow}>NĂNG LỰC TRIỂN KHAI</p><h2>Từ bản vẽ đến ngày phòng máy sáng đèn.</h2></div><Link href="/dich-vu">Xem toàn bộ dịch vụ <span>↗</span></Link></div>
-      <div className={styles.highlightGrid}>{highlights.map((item, index) => <article className={styles.highlightCard} key={item.id}><Image src={item.coverImage ?? "/images/project-esports-hd-v3.webp"} alt={`Minh họa dịch vụ ${item.name}`} fill quality={90} sizes="(max-width: 760px) 100vw, 33vw" /><div className={styles.cardShade}/><div className={styles.cardContent}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.name}</h3><p>{item.summary}</p><Link href={`/dich-vu/${item.slug}`}>Tìm hiểu thêm <b>↗</b></Link></div></article>)}</div>
+      <div className={styles.highlightGrid}>{highlights.map((item, index) => <article className={styles.highlightCard} key={item.id}><Image src={item.coverImage ?? "/images/project-esports-hd-v3.webp"} alt={`Minh họa dịch vụ ${item.name}`} fill quality={90} sizes="(max-width: 760px) 100vw, 33vw" /><div className={styles.cardShade}/><div className={styles.cardContent}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.name}</h3><p>{item.summary}</p><Link href={serviceCanonicalPath(item.slug)}>Tìm hiểu thêm <b>↗</b></Link></div></article>)}</div>
     </section>
 
     <section className={styles.immersive}>

@@ -9,6 +9,7 @@ export type ContentProject = {
   summary: string;
   content: string | null;
   coverImage: string | null;
+  updatedAt: string;
 };
 
 export type ContentPost = {
@@ -19,6 +20,8 @@ export type ContentPost = {
   content: string | null;
   coverImage: string | null;
   category: string | null;
+  publishedAt: string | null;
+  updatedAt: string;
 };
 
 export type ContentService = {
@@ -30,6 +33,7 @@ export type ContentService = {
   benefits: string[];
   deliverables: string[];
   coverImage: string | null;
+  updatedAt: string;
 };
 
 export type ContentPackage = {
@@ -43,6 +47,7 @@ export type ContentPackage = {
   priceTo: number | null;
   features: string[];
   featured: boolean;
+  updatedAt: string;
 };
 
 export type ContentFaq = {

@@ -5,13 +5,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentState } from "@/components/content-state";
 import { getPublishedPosts } from "@/services/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import styles from "../showcase.module.css";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Kiến thức đầu tư, thiết kế và vận hành phòng máy.",
-};
+export const metadata: Metadata = createPageMetadata({ title: "Kiến thức đầu tư, thiết kế & vận hành quán net", description: "Bài viết hướng dẫn về chi phí, cấu hình, thiết kế và vận hành phòng máy, Cyber Gaming tại Đà Nẵng.", path: "/blog" });
 
 export default async function BlogPage() {
   const result = await getPublishedPosts();

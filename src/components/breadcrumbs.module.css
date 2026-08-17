@@ -1,0 +1,7 @@
+.breadcrumbs { margin: 0 0 28px; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.5; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.breadcrumbs li { display: inline-flex; align-items: center; }
+.breadcrumbs li:not(:last-child)::after { margin-left: 7px; color: var(--cyan); content: "/"; }
+.breadcrumbs a:hover { color: var(--cyan); }
+
+
